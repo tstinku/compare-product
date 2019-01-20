@@ -1,0 +1,84 @@
+<div class="compare-page">
+  <div class="row" style="height:200px">
+    <div class="col-sm-4">
+      <h3>Compare</h3>
+      <p>2 Items Selected</p>
+    </div>
+    <div class="col-sm-4">
+      <div class="">
+        <img class="img-fluid" style="width: 250px;height: 150px;" src="{{lcdFirstImage}}">
+      </div>
+      <select class="form-control" placeholder="select product" [(ngModel)] = "lcdFirst" (change)="getImage()">
+        <option *ngFor="let tv of allLcd" value="{{tv.name}}" >{{tv.title}}</option>
+      </select>
+    </div>
+    <div class="col-sm-4">
+      <div class="">
+        <img class="img-fluid" style="width: 250px;height: 150px;" src="{{lcdSecondImage}}">
+      </div>
+      <select class="form-control" placeholder="select product" [(ngModel)] = "lcdSecond" (change)="getImage()">
+        <option *ngFor="let tv of allLcd" value="{{tv.name}}" >{{tv.title}}</option>
+      </select>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="item heading">Display</div>
+      <div class="item">Size</div>
+      <div class="item">Screen Type</div>
+      <div class="item">HD Technology & Resolution</div>
+      <div class="item">3D</div>
+      <div class="item heading">General Features</div>
+      <div class="item">Smart TV</div>
+      <div class="item">Curve TV</div>
+      <div class="item">Touchscreen</div>
+      <div class="item">Motion Sensor</div>
+      <div class="item">Launch Year</div>
+      <!-- <div class="item">In the Box</div> -->
+      <div class="item heading">Internet Features</div>
+      <div class="item">Built in Wifi</div>
+      <div class="item">Wireless Ready</div>
+      <div class="item">3G Dongle Plug and Play</div>
+      <div class="item">Ethernet (RJ45)</div>
+    </div>
+    <div class="col-sm-4">
+      <div class="item"></div>
+      <div class="item">{{data?data.products.featuresList[0].features[0].values[lcdFirst]:""}}</div>
+      <div class="item">{{data?data.products.featuresList[0].features[1].values[lcdFirst]:""}}</div>
+      <div class="item">{{data?data.products.featuresList[0].features[2].values[lcdFirst]:""}}</div>
+      <div class="item">{{data?data.products.featuresList[0].features[3].values[lcdFirst]:""}}</div>
+      <div class="item"></div>
+      <div class="item">{{data?data.products.featuresList[1].features[0].values[lcdFirst]:""}}</div>
+      <div class="item">{{data?data.products.featuresList[1].features[1].values[lcdFirst]:""}}</div>
+      <div class="item">{{data?data.products.featuresList[1].features[2].values[lcdFirst]:""}}</div>
+      <div class="item">{{data?data.products.featuresList[1].features[3].values[lcdFirst]:""}}</div>
+      <div class="item">{{data?data.products.featuresList[1].features[4].values[lcdFirst]:""}}</div>
+      <!-- <div class="item">{{data?data.products.featuresList[1].features[5].values[lcdFirst]:""}}</div> -->
+      <div class="item "></div>
+      <div class="item">{{data?data.products.featuresList[2].features[0].values[lcdFirst]:""}}</div>
+      <div class="item">{{data?data.products.featuresList[2].features[1].values[lcdFirst]:""}}</div>
+      <div class="item">{{data?data.products.featuresList[2].features[2].values[lcdFirst]:""}}</div>
+      <div class="item">{{data?data.products.featuresList[2].features[3].values[lcdFirst]:""}}</div>
+    </div>
+    <div class="col-sm-4">
+      <div class="item"></div>
+      <div class="item">{{data?data.products.featuresList[0].features[0].values[lcdSecond]:""}}</div>
+      <div class="item">{{data?data.products.featuresList[0].features[1].values[lcdSecond]:""}}</div>
+      <div class="item">{{data?data.products.featuresList[0].features[2].values[lcdSecond]:""}}</div>
+      <div class="item">{{data?data.products.featuresList[0].features[3].values[lcdSecond]:""}}</div>
+      <div class="item"></div>
+      <div class="item">{{data?data.products.featuresList[1].features[0].values[lcdSecond]:""}}</div>
+      <div class="item">{{data?data.products.featuresList[1].features[1].values[lcdSecond]:""}}</div>
+      <div class="item">{{data?data.products.featuresList[1].features[2].values[lcdSecond]:""}}</div>
+      <div class="item">{{data?data.products.featuresList[1].features[3].values[lcdSecond]:""}}</div>
+      <div class="item">{{data?data.products.featuresList[1].features[4].values[lcdSecond]:""}}</div>
+      <!-- <div class="item">{{data?data.products.featuresList[1].features[5].values[lcdSecond]:""}}</div> -->
+      <div class="item "></div>
+      <div class="item">{{data?data.products.featuresList[2].features[0].values[lcdSecond]:""}}</div>
+      <div class="item">{{data?data.products.featuresList[2].features[1].values[lcdSecond]:""}}</div>
+      <div class="item">{{data?data.products.featuresList[2].features[2].values[lcdSecond]:""}}</div>
+      <div class="item">{{data?data.products.featuresList[2].features[3].values[lcdSecond]:""}}</div>
+    </div>
+  </div>
+</div>

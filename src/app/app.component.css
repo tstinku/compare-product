@@ -1,0 +1,15 @@
+.compare-page{
+  border: 2px solid;
+  padding: 5px;
+}
+.item{
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+.heading{
+  background: #e6e7e7;
+}
+.row .col-sm-4:first-child .item{
+  font-weight: bold;
+}
