@@ -1,24 +1,50 @@
 <div class="compare-page">
-  <div class="row" style="height:200px">
+  <div class="row" style="height:260px">
     <div class="col-sm-4">
       <h3>Compare</h3>
       <p>2 Items Selected</p>
     </div>
     <div class="col-sm-4">
+      <!-- <div class="close-button">✕</div> -->
       <div class="">
         <img class="img-fluid" style="width: 250px;height: 150px;" src="{{lcdFirstImage}}">
       </div>
       <select class="form-control" placeholder="select product" [(ngModel)] = "lcdFirst" (change)="getImage()">
         <option *ngFor="let tv of allLcd" value="{{tv.name}}" >{{tv.title}}</option>
       </select>
+      <div style="height:50px">
+        <div>{{data?data.products.compareSummary.titles[lcdFirst].title:""}}</div>
+        <span style="font-weight:bold">
+          <i class="fa fa-inr" aria-hidden="true"></i>
+          {{data?data.products.compareSummary.productPricingSummary[lcdFirst].finalPrice:""}}
+        </span>
+        <span style="color: #a7a7a7;">
+          <i class="fa fa-inr" aria-hidden="true"></i>
+          <s>{{data?data.products.compareSummary.productPricingSummary[lcdFirst].price:""}}</s>
+        </span>
+        <span style="color:#499d3a">{{data?data.products.compareSummary.productPricingSummary[lcdFirst].totalDiscount:""}}%</span>
+      </div>
     </div>
     <div class="col-sm-4">
+      <!-- <div class="close-button" (click)="lcdSecond=''">✕</div> -->
       <div class="">
         <img class="img-fluid" style="width: 250px;height: 150px;" src="{{lcdSecondImage}}">
       </div>
       <select class="form-control" placeholder="select product" [(ngModel)] = "lcdSecond" (change)="getImage()">
         <option *ngFor="let tv of allLcd" value="{{tv.name}}" >{{tv.title}}</option>
       </select>
+      <div style="height:50px">
+        <div>{{data?data.products.compareSummary.titles[lcdSecond].title:""}}</div>
+        <span style="font-weight:bold">
+          <i class="fa fa-inr" aria-hidden="true"></i>
+          {{data?data.products.compareSummary.productPricingSummary[lcdSecond].finalPrice:""}}
+        </span>
+        <span style="color: #a7a7a7;">
+          <i class="fa fa-inr" aria-hidden="true"></i>
+          <s>{{data?data.products.compareSummary.productPricingSummary[lcdSecond].price:""}}</s>
+        </span>
+        <span style="color:#499d3a">{{data?data.products.compareSummary.productPricingSummary[lcdSecond].totalDiscount:""}}%</span>
+      </div>
     </div>
   </div>
   <mat-divider></mat-divider>
