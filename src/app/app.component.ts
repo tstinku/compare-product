@@ -8,6 +8,8 @@ import { ProductService } from './product.service';
 })
 export class AppComponent implements OnInit {
   data;
+  diffData:boolean;
+  dataCopy = {};
   allLcd = [];
   lcdFirst:string = "TVSF2WYXTKAR7RAF";
   lcdSecond:string = "TVSF2WYUE4PWNJKM";
@@ -22,16 +24,18 @@ export class AppComponent implements OnInit {
         // console.log(res);
         // this.AllLcd=res.products.compareSummary.titles;
         let tvName = this.lcdFirst
-        console.log(res.products.featuresList[0].features[0].values["TVSF2WYXTKAR7RAF"]);
+        console.log(res['products'].featuresList[0].features[0].values["TVSF2WYXTKAR7RAF"]);
         this.data=res;
+        // this.dataCopy = res;
         let temp={};
-        for(let key in res.products.compareSummary.titles){
+        this.allLcd = [];
+        for(let key in res['products'].compareSummary.titles){
           // console.log(key);
 
           temp = {};
-          temp.name = key;
-          temp.subtitle = res.products.compareSummary.titles[key].subtitle;
-          temp.title = res.products.compareSummary.titles[key].title;
+          temp['name'] = key;
+          temp['subtitle'] = res['products'].compareSummary.titles[key].subtitle;
+          temp['title'] = res['products'].compareSummary.titles[key].title;
           this.allLcd.push(temp);
         }
       },
@@ -44,9 +48,33 @@ export class AppComponent implements OnInit {
   getImage() {
     let lcdFirst  = this.lcdFirst;
     let lcdSecond = this.lcdSecond;
-    this.lcdFirstImage = this.data.products.compareSummary.images[lcdFirst];
-    this.lcdSecondImage = this.data.products.compareSummary.images[lcdSecond];
+    if(this.lcdFirst != this.lcdSecond) {
+      this.lcdFirstImage = this.data.products.compareSummary.images[lcdFirst];
+      this.lcdSecondImage = this.data.products.compareSummary.images[lcdSecond];
+      this.diffData = false;
+    }else {
+      alert("Please select different one");
+    }
 
+  }
+  getDiffData() {
+    // let tempData = [];
+    let lcdFirst  = this.lcdFirst;
+    let lcdSecond = this.lcdSecond;
+    this.getAllProducts();
+    if(this.diffData){
+      this.dataCopy = Object.assign({}, this.data);
+      for(let i=0; i<this.dataCopy['products'].featuresList.length; i++) {
+        console.log(this.dataCopy['products'].featuresList[i].features.length);
+        for(let j=0; j<this.dataCopy['products'].featuresList[i].features.length; j++){
+          if(this.dataCopy['products'].featuresList[i].features[j].values[lcdFirst] === this.data.products.featuresList[i].features[j].values[lcdSecond]){
+            delete this.dataCopy['products'].featuresList[i].features[j].values[lcdFirst];
+            delete this.dataCopy['products'].featuresList[i].features[j].values[lcdSecond];
+          }
+        }
+      }
+      console.log(this.data);
+    }
   }
 
   ngOnInit() {
